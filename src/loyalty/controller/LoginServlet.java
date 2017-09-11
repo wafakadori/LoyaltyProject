@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
- // get card number input and code input
+		// get card number input and code input
 		String cardNumber = request.getParameter("cardNumber");
 		String cardCode = request.getParameter("cardCode");
 		loyaltyservice = new LoyaltyServiceImpl();
@@ -36,20 +36,19 @@ public class LoginServlet extends HttpServlet {
 			hasError = true;
 			errorString = "Card number and card code mandatory!";
 		} else {
-			LoyaltyBalanceResponseType result=loyaltyservice.getLoyaltyBalance(cardNumber, cardCode);
-			
+			LoyaltyBalanceResponseType result = loyaltyservice.getLoyaltyBalance(cardNumber, cardCode);
 
-				if (result == null) {
-					hasError = true;
-					errorString = "invalid Card number or card code";
-				}
-				
-				
-				request.setAttribute("totalPoints", result);
-	
+			if (result == null || result.getTotalPoint() == null) {
+				hasError = true;
+				errorString = "invalid Card number or card code";
+			}
+
+			else {
+				request.setAttribute("totalPoints", result.getTotalPoint().toString());
+
+			}
+
 		}
-
-		
 
 		// If error, forward to /WEB-INF/views/login.jsp
 		if (hasError) {
@@ -62,6 +61,15 @@ public class LoginServlet extends HttpServlet {
 
 			dispatcher.forward(request, response);
 		}
+		else {
+			request.setAttribute("errorString", "");
+
+			RequestDispatcher dispatcher 
+			= this.getServletContext().getRequestDispatcher("/displayPoints.jsp");
+	dispatcher.forward(request, response);
+		}
+		
+		
 
 	}
 
@@ -70,9 +78,7 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 
-		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/displayPoints.jsp");
-		dispatcher.forward(request, response);
+		
 	}
 
 }
