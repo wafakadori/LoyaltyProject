@@ -25,6 +25,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+				System.out.println("addfirstcomit from github");
 		// get card number input and code input
 		String cardNumber = request.getParameter("cardNumber");
 		String cardCode = request.getParameter("cardCode");
