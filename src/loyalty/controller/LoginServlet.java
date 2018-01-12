@@ -17,7 +17,12 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("add a new commit 2222222");
+
 		System.out.println("add a new commit 5555555");
+
+		System.out.println("add a new commit 66666");
+
+
 		// get card number input and code input
 		String cardNumber = request.getParameter("cardNumber");
 		String cardCode = request.getParameter("cardCode");
