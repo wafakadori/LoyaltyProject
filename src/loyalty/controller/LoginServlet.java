@@ -1,14 +1,5 @@
 package loyalty.controller;
 
-import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import loyalty.service.LoyaltyBalanceResponseType;
 import loyalty.service.LoyaltyService;
 import loyalty.service.LoyaltyServiceImpl;
@@ -25,6 +16,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("add a new commit");
 		// get card number input and code input
 		String cardNumber = request.getParameter("cardNumber");
 		String cardCode = request.getParameter("cardCode");
@@ -35,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 		if (cardNumber == null || cardCode == null || cardNumber.length() == 0 || cardCode.length() == 0) {
 			hasError = true;
 			errorString = "Card number and card code mandatory!";
-		} else {
+		} else {c
 			LoyaltyBalanceResponseType result = loyaltyservice.getLoyaltyBalance(cardNumber, cardCode);
 
 			if (result == null || result.getTotalPoint() == null) {
