@@ -17,6 +17,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("add a new commit 2222222");
+		System.out.println("add a new commit 3333333");
 		// get card number input and code input
 		String cardNumber = request.getParameter("cardNumber");
 		String cardCode = request.getParameter("cardCode");
@@ -56,12 +57,12 @@ public class LoginServlet extends HttpServlet {
 		else {
 			request.setAttribute("errorString", "");
 
-			RequestDispatcher dispatcher 
+			RequestDispatcher dispatcher
 			= this.getServletContext().getRequestDispatcher("/displayPoints.jsp");
 	dispatcher.forward(request, response);
 		}
-		
-		
+
+
 
 	}
 
@@ -70,7 +71,7 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 
-		
+
 	}
 
 }
