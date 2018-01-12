@@ -21,6 +21,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("add a new commit 5555555");
 
 		System.out.println("add a new commit 77777");
+		System.out.println("add a new commit 8888");
 
 
 		// get card number input and code input
