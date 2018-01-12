@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 
 		System.out.println("add a new commit 77777");
 		System.out.println("add a new commit 111111");
-System.out.println("addfirstcomit from github");
+System.out.println("addfirstcomit from);
 
 		// get card number input and code input
 		String cardNumber = request.getParameter("cardNumber");
